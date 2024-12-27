@@ -38,11 +38,11 @@ packages=(
 
 rpm-ostree install ${packages[@]}
 
-cd /home/
+cd /tmp/
 git clone https://github.com/FloFri/kwin-blishhud-shader.git
 cd kwin-blishhud-shader
 mkdir -p build && cd build
 cmake .. && make && make install
 
 rpm-ostree uninstall ${temp_packages[@]}
-rm -Rf /home/kwin-blishhud-shader/
+rm -Rf /tmp/kwin-blishhud-shader/
