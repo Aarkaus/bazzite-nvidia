@@ -23,7 +23,6 @@ rpm-ostree install screen
 systemctl enable podman.socket
 
 temp_packages=(
-    git
     extra-cmake-modules
     kwin-devel
     kf6-kconfigwidgets-devel
