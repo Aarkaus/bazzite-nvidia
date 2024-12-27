@@ -21,3 +21,28 @@ rpm-ostree install screen
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+
+temp_packages=(
+    git
+    extra-cmake-modules
+    kwin-devel
+    kf6-kconfigwidgets-devel
+    kf6-kcmutils-devel
+    libepoxy-devel
+    wayland-devel
+)
+
+packages=(
+  ${temp_packages[@]}
+)
+
+rpm-ostree install ${packages[@]}
+
+cd /home/
+git clone https://github.com/FloFri/kwin-blishhud-shader.git
+cd kwin-blishhud-shader
+mkdir -p build && cd build
+cmake .. && make && make install
+
+rpm-ostree uninstall ${temp_packages[@]}
+rm -Rf /home/kwin-blishhud-shader/
